@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.book_title }} - Details{% endblock %}
+
+{% block body %}
+  
+<h1>{{ book.book_title }}</h1>
+<p>
+  {{ book.author }}
+  {{ book.isbn }}
+  {{ book.avg_rating }}
+  {{ book.language_code }}
+  {{ book.num_page }}
+</p>
+{% if session.get('user_email') %}
+<h2>Rate this book</h2>
+<form action="/books/{{ book.book_id }}/user_ratings" method="POST">
+  <p>
+    Select a Rating:
+      {% for num in range(6) %}
+        <input type="radio" name="rating" value="{{num}}">
+        <label value="{{ num }}">{{ num }}</label>
+        
+      {% endfor %}
+  </p>
+  <p><input type="submit"></p>
+</form>
+
+<h2>Like this book? Add to Favorite</h2>
+
+<form action="/books/{{ book.book_id }}/favorites" method="POST">
+  <label>Comment</label>
+  <input type="text" name="comment">
+  <button type="submit">Favorite</button>
+</form>
+
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Top Books{% endblock %}
+
+{% block body %}
+
+<h1>Top recommended books:</h1>
+
+<ul>
+    {% for book in books %}
+      {{ book.book_title }}
+      {{ book.book_id }}
+      {{ book.num_page }}
+      {{ book.avg_rating }}
+    
+    </li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
+
+
+

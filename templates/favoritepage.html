@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Favorite Book{% endblock %}
+
+{% block body %}
+
+
+<ul>
+    <li>
+        {{ favorites.favorite_id }}
+        {{ favorites.book_id }}
+        {{ favorites.favorite_book.book_title}}
+        {{ favorites.date_add }}
+        {{ favorites.comment }}
+       
+    </li>
+
+
+</ul>
+
+
+
+
+{% endblock %}
+
+
+<!-- <form action="/books/{{ book.book_id }}/favorites" method="POST">
+    <label>Comments:</label>
+    <textarea name="user-comment"></textarea>
+    
+    <button type="submit">Add</button>
+</form> -->
+

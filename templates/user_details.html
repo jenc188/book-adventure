@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.email }} - Details{% endblock %}
+
+{% block body %}
+<h1>{{ user.email }}</h1>
+
+<p>
+  User name {{ user.first_name }} {{ user.last_name }}
+</p>
+<p>
+  User email {{ user.email }}
+</p>
+<h3>My Favorite Books List</h3>
+<ul>
+{% for favorite in favorites %}
+  <li>
+      <!-- {{ favorite.favorite_id }} -->
+      <!-- {{ favorite.book_id }} -->
+      {{ favorite.favorite_book.book_title }}
+      {{ favorite.date_add }}
+      {{ favorite.comment }}
+  </li>
+
+  <button class="delete-button" id="delete-{{favorite.favorite_id}}">Delete</button>
+
+{% endfor %}
+</ul>
+
+<h3>My Book Ratings</h3>
+{% for rating in user_ratings %}
+  <li>
+      <!-- {{ rating.book_id }} -->
+      {{ rating.user_rating_book.book_title }}
+      {{ rating.rating_score}}
+      
+  </li>
+
+{% endfor %}
+{% endblock %}
+

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Search {% endblock %}
+
+{% block body %}
+  
+<h1>Search a book</h1>
+
+<form action="/searchbook" method="GET">
+    <label>Search by Book Title:</label>
+    <textarea name="search-title"></textarea>
+
+
+    <p><input type="submit"></p>
+</form>
+
+
+
+{% endblock %}
