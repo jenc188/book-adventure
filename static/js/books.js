@@ -30,6 +30,7 @@ for (const button of buttons){
             });
     });
     
+    
 }
 
 buttons = document.querySelectorAll('.edit-button');
