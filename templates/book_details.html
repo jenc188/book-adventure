@@ -4,38 +4,67 @@
 
 {% block body %}
   
-<h1>{{ book.book_title }}</h1>
-<p>
-  {{ book.author }}
-  {{ book.isbn }}
-  {{ book.avg_rating }}
-  {{ book.language_code }}
-  {{ book.num_page }}
-</p>
-{% if session.get('user_email') %}
-<h2>Rate this book</h2>
-<form action="/books/{{ book.book_id }}/user_ratings" method="POST">
-  <p>
-    Select a Rating:
-      {% for num in range(6) %}
-        <input type="radio" name="rating" value="{{num}}">
-        <label value="{{ num }}">{{ num }}</label>
+
+<section class="Form my-4 mx-5">
+  <div class="form-login-container">
+    <div class="row g-0">
+      <div class="col-lg-5">
+        <img src="/static/img/bookdetail.jpg" class="img-fluid" alt=" ">
         
-      {% endfor %}
-  </p>
-  <p><input type="submit"></p>
-</form>
+      </div>
+      <div class="col-lg-7 px-5 pt-5">
+        <h1>{{ book.book_title }}</h1>
+        <p>
+          Author: {{ book.author }},
+          Isbn: {{ book.isbn }},
+          Rating: {{ book.avg_rating }},
+          Language: {{ book.language_code }},
+          Page: {{ book.num_page }}
+        </p>
+        <br/>
+  {% if session.get('user_email') %}
+    <h2>Rate this book</h2>
+    <form action="/books/{{ book.book_id }}/user_ratings" method="POST">
+      <p>
+        Select a Rating:
+          {% for num in range(6) %}
+            <input type="radio" name="rating" value="{{num}}">
+            <label value="{{ num }}">{{ num }}</label>
+            
+          {% endfor %}
+      </p>
+      <p><input type="submit"></p>
+    </form>
+    <br/>
+    {% if favorite %}
 
-<h2>Like this book? Add to Favorite</h2>
+    <h2>Like this book? Add to Favorite</h2>
 
-<form action="/books/{{ book.book_id }}/favorites" method="POST">
-  <label>Comment</label>
-  <input type="text" name="comment">
-  <button type="submit">Favorite</button>
-</form>
+    <form action="/books/{{ book.book_id }}/favorites" method="POST">
+      <label>Comment</label>
+      <input type="text" name="comment">
+      <button type="submit">Favorite</button>
+    </form>
+    {% endif %}
+
+    <form action="/share_book" method="GET">
+      <label>Share with friends by Text!</label>
+      <input hidden type="text" name="book_to_share" value="{{ book.book_title }}">
+      <input hidden type="text" name="book_id_text" value="{{ book.book_id }}">
+      <input hidden type="text" name="user_name" value="{{ session.user_email }}">
+      <input type="text" name="phone_number">
+      <button id="share" type="submit">Share</button>
+    </form>
+    <br/>
+  <p>Click <a target=blank href="https://www.google.com/search?q={{ book.book_title }}"> here </a>to look up this book online</p>
+  {% endif %}
+      </div>
+    </div>
+  </div>
 
 
-{% endif %}
+</section>
+
 
 
 {% endblock %}

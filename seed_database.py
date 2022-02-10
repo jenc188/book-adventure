@@ -23,15 +23,15 @@ with open('data/booksdata.csv', newline='') as csvfile:
         # dictionary.
         book_title = book['title']
         author = book['authors']
-        isbn = book['isbn']
         avg_rating = book['average_rating']
+        isbn = book['isbn']
         language_code= book['language_code']
         num_page= book['num_pages']
 
         
     
     #create a book and append it to books_in_db
-        new_book = crud.create_book(book_title, author, isbn, avg_rating, language_code, num_page)
+        new_book = crud.create_book(book_title=book_title, author=author, isbn=isbn, avg_rating=avg_rating, language_code=language_code,num_page=num_page)
         books_in_db.append(new_book)
    
 

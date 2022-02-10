@@ -54,11 +54,21 @@ def get_book_by_id(book_id):
 
 def get_book_by_title(book_title):
     """Return a book(Book objects) with a specific title."""
-    book_title = book_title.title()
+    book_title = book_title.title()  # title() is to fix capitalization of title
     book = Book.query.filter(Book.book_title.like(f'%{book_title}%')).all()
 
     if book:
         return book
+    else: 
+        return None
+
+
+def get_book_by_author(author):
+    """Return a book(Book objects) with a specific author."""
+    author = author.title() # title() is to fix capitalization of author name
+    books= Book.query.filter(Book.author.like(f'%{author}%')).all()
+    if books:
+        return books
     else: 
         return None
 
@@ -115,6 +125,16 @@ def get_favorites_by_id(user_id):
 
     return user_all_favorites
 
+
+def find_duplicate(user_id, book_id):
+
+    favorite_duplicate = Favorite.query.filter(Favorite.user_id == user_id, Favorite.book_id == book_id).first()
+
+    return favorite_duplicate
+
+
+
+
 def delete_favorite(favorite_id):
     """Delete book from favorite"""
 
@@ -123,15 +143,26 @@ def delete_favorite(favorite_id):
     db.session.delete(delete_book)
     db.session.commit()
 
-    
-def get_top_books(avg_rating):
+
+def edit_comment(favorite_id, comment):
+    """Edit the comment"""
+
+    favorite = Favorite.query.filter(Favorite.favorite_id == favorite_id).first()
+
+    favorite.comment = comment
+
+    # edit_comment = Favorite.query.filter(Favorite.comment == comment).first()
+
+    # db.session.add(edit_comment)
+    db.session.commit()
+
+
+def get_top_books():
     """Delete book from favorite"""
 
-    top_books = Book.query.filter(Book.avg_rating > 4.50).all()
-
+    top_books = Book.query.filter(Book.avg_rating > '4.50').all()
+    
     return top_books
-
-
 
 
 if __name__ == '__main__':

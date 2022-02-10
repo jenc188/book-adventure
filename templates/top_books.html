@@ -3,20 +3,32 @@
 
 {% block body %}
 
-<h1>Top recommended books:</h1>
+<section class="Form my-4 mx-5">
+  <div class="form-login-container">
+    <div class="row g-0">
+      <div class="col-lg-5">
+        <img src="/static/img/sunflower.jpg" class="img-fluid" alt=" ">
+      </div>
+      <div class="col-lg-7 px-5 pt-5">
+        <h1 class="font-weight-bold py-3">Top Recommended Books</h1>
+        <p>Good Reading.</p>
+        <ul>
+   
+          {% for book in top_books %}
+              <li>
+                {{ book.book_title }}
+            
+                rating: {{ book.avg_rating }}
+              </li>
+          {% endfor %}
+          </ul>
+        
+      </div>
+    </div>
+  </div>
 
-<ul>
-    {% for book in books %}
-      {{ book.book_title }}
-      {{ book.book_id }}
-      {{ book.num_page }}
-      {{ book.avg_rating }}
-    
-    </li>
-    {% endfor %}
-    </ul>
+
+</section>
 
 {% endblock %}
-
-
 

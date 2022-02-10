@@ -3,11 +3,37 @@
 
 {% block body %}
 
-<ul>
-{% for book in books %}
-  <li><a href="/books/{{book.book_id}}">{{ book.book_title }}</li>
-{% endfor %}
-</ul>
 
+<!-- <section class="Form my-4 mx-5 listlayout">
+  <div class="form-login-container">
+    <div class="row g-0">
+      <div class="col-lg-12 px-5 pt-5">
+        <img src="/static/img/listbookspic1.jpg" width="300" height="500"class="img-fluid" alt=" ">
+        <h4>List of all books</h4>
+          <ul>
+          {% for book in books %}
+            <li><a href="/books/{{book.book_id}}">{{ book.book_title }}</li>
+          {% endfor %}
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+
+
+</section> -->
+
+<div id="list-container">
+  
+  <!-- <img src="/static/img/listbookspic1.jpg" width="600" height="400" alt="books"> -->
+  
+  <h3>List of all books</h3>
+  <ul>
+  {% for book in books %}
+    <li><a href="/books/{{book.book_id}}">{{ book.book_title }}</li>
+  {% endfor %}
+  </ul>
+ 
+</div>
 
 {% endblock %}

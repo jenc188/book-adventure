@@ -3,39 +3,75 @@
 {% block title %}{{ user.email }} - Details{% endblock %}
 
 {% block body %}
-<h1>{{ user.email }}</h1>
 
-<p>
-  User name {{ user.first_name }} {{ user.last_name }}
-</p>
-<p>
-  User email {{ user.email }}
-</p>
-<h3>My Favorite Books List</h3>
-<ul>
-{% for favorite in favorites %}
-  <li>
-      <!-- {{ favorite.favorite_id }} -->
-      <!-- {{ favorite.book_id }} -->
-      {{ favorite.favorite_book.book_title }}
-      {{ favorite.date_add }}
-      {{ favorite.comment }}
-  </li>
 
-  <button class="delete-button" id="delete-{{favorite.favorite_id}}">Delete</button>
+  <div class="container">
+    <h1>My Profile</h1>
+    <div class="row g-3" id="special-style">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card">
+          <img src="/static/img/profilepic.jpg" alt="Stacks of books" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">User Information</h5>
 
-{% endfor %}
-</ul>
+              <p>
+                User name: {{ user.first_name|capitalize }} {{ user.last_name|capitalize }}
+              </p>
+              <p>
+                User email: {{ user.email }}
+              </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card">
+          <img src="/static/img/card1picr.jpg" alt="Stacks of books" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">My Favorite Book List</h5>
+            <ul>
+              {% for favorite in favorites %}
+              <div data-favorite-id = "{{ favorite.favorite_id }}" >
+                <li>
+                    <!-- {{ favorite.favorite_id }} -->
+                    <!-- {{ favorite.book_id }} -->
+                    {{ favorite.favorite_book.book_title }},
+                    Date added: {{ favorite.date_add }}
+                    <div>Comment: {{ favorite.comment }}</div>
+                
+                </li>
+            
+                <button class="edit-button" id="edit-{{favorite.comment}}">Edit Comment</button>
+            
+                <button class="delete-button" id="delete-{{favorite.favorite_id}}">Delete</button>
+              </div> <!-- closes out -->
+              
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card">
+          <img src="/static/img/card2picr.jpg" alt="Book with coffee" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">My Book Ratings</h5>
+            {% for rating in user_ratings %}
+            <li>
+                <!-- {{ rating.book_id }} -->
+                {{ rating.user_rating_book.book_title }},
+                Rating: {{ rating.rating_score}}
+                
+            </li>
 
-<h3>My Book Ratings</h3>
-{% for rating in user_ratings %}
-  <li>
-      <!-- {{ rating.book_id }} -->
-      {{ rating.user_rating_book.book_title }}
-      {{ rating.rating_score}}
-      
-  </li>
+            {% endfor %}
+          </div>
+      </div>
+    </div>
+  </div>
 
-{% endfor %}
+
+
+
 {% endblock %}
+
 

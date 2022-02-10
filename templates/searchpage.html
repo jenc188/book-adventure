@@ -4,16 +4,36 @@
 
 {% block body %}
   
-<h1>Search a book</h1>
 
-<form action="/searchbook" method="GET">
-    <label>Search by Book Title:</label>
-    <textarea name="search-title"></textarea>
+<section class="Form my-4 mx-5">
+    <div class="form-login-container">
+      <div class="row g-0">
+        <div class="col-lg-5">
+          <img src="/static/img/searchpic.jpg" class="img-fluid" alt=" ">
+        </div>
+        <div class="col-lg-7 px-5 pt-5">
+          <h1 class="font-weight-bold py-3">Search a book</h1>
+          <p>You can search the book by title or author.</p>
+
+          <form action="/searchbook" method="GET"> 
+        
+            <textarea name="search-title" placeholder="Search by title"></textarea>
+            <p><input type="submit"></p>
+        </form>
+    
+        <form action="/searchbook_by_author" method="GET">
+           
+            <textarea name="search-author" placeholder="Search by author"></textarea>
+            <p><input type="submit"></p>
+        </form> 
+        <p>View all books <a href="/books">here</a></p>
+        </div>
+      </div>
+    </div>
 
 
-    <p><input type="submit"></p>
-</form>
+  </section>
 
+  
+  {% endblock %}
 
-
-{% endblock %}

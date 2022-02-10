@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}My Book Home{% endblock %}
+
+{% block body %}
+  
+<section class="container-fluid">
+  <section class="row-6 row justify-content-center">
+    <section class="col-12 col-md-4 col-md-3">
+      <form action="/users" method="POST" class="form-create-container">
+        <h2>Create an Account</h2>
+        <div class="mb-3">
+          <label for="validationCustom01" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="validationCustom01" name="first_name" placeholder="First Name">
+          
+        </div>
+        <div class="mb-3">
+          <label for="validationCustom02" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="Last Name">
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Email-Address">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="user_password" placeholder="********">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    </section>
+  </section>
+
+</section>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
