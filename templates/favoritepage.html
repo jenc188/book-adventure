@@ -4,21 +4,23 @@
 
 {% block body %}
 
-
+<div id="list-container">
 <ul>
     <li>
-        {{ favorites.favorite_id }}
-        {{ favorites.book_id }}
-        {{ favorites.favorite_book.book_title}}
-        {{ favorites.date_add }}
-        {{ favorites.comment }}
+        <!-- {{ favorites.favorite_id }}
+        {{ favorites.book_id }} -->
+        Title: {{ favorites.favorite_book.book_title}}
+        <br/>
+        Date Add: {{ favorites.date_add }}
+        <br/>
+        Comment: {{ favorites.comment }}
        
     </li>
 
 
 </ul>
 
-
+</div>
 
 
 {% endblock %}

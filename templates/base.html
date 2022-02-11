@@ -17,7 +17,7 @@
     <nav class="navbar sticky-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
-          <img src="/static/img/logoimg.png" alt="" width="200" height="70" class="d-inline-block align-text-top"></a> 
+          <img src="/static/img/logoimg.png" alt="bookself" width="200" height="70" class="d-inline-block align-text-top"></a> 
           <ul class="nav justify-content-end">
             
             
@@ -41,24 +41,20 @@
       </div>
     </nav>
 
-
+    <div id="center-msg">
       {% for msg in get_flashed_messages() %}
       <p class="flash-msg">
         {{ msg }}
-    
       </p>
 
       {% endfor %}
     
-
-  <!-- </div> -->
-  <!-- <div class="container-fluid"> -->
-    <!-- <div class="row"> -->
+    </div>
+  
     {% block body %}
     
     {% endblock %}
-    <!-- </div> this closes the row  -->
-  <!-- </div>  this closes the container  -->
+    
 
     {% block after_body %}{% endblock %}
     <!-- Bootstrap JS-->

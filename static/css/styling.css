@@ -12,7 +12,10 @@ body,.navbar{
     background-color: #F2B199;
 }
 
-
+#center-msg{
+    padding-left: 100px;
+    
+}
 
 .row{
     background-color: white;
